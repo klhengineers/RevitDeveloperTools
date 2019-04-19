@@ -1,0 +1,27 @@
+﻿<Window x:Class="ParameterEditor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="ParameterEditor" ResizeMode="NoResize" SizeToContent="WidthAndHeight">
+    <StackPanel>
+        <ListView ItemsSource="{Binding ParameterValues}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{Binding Parameter}" 
+                               Width="250"/>
+                        <TextBox Text="{Binding ArgumentString, Mode=TwoWay}" 
+                                 Width="150"
+                                 VerticalAlignment="Center"
+                                 Background="{Binding ValidationColor}"
+                                 IsEnabled="{Binding Editable}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Click="Button_Click">OK</Button>
+    </StackPanel>
+</Window>
