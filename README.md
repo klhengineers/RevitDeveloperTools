@@ -17,7 +17,7 @@ form.Show();
 ```
 
 ### Features
-![Screenshot](KLH.Revit.DeveloperTools/Resources/screenshot.png)
+![Screenshot](Resources/screenshot.png)
 
 * **Property Grouping**: Groups properties by thier derived class.
 * **Selection Parity**: If the UIDocument has elements in its selection when the tool is run, those elements are shown in the tool. Select elements in the tool to select them in the document. 
