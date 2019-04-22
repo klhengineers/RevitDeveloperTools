@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "KLH.Revit.DeveloperTools", "KLH.Revit.DeveloperTools\KLH.Revit.DeveloperTools.vbproj", "{CFBF30C9-B8A3-46F0-9C23-5639A181B5BC}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "KLH.Revit.DeveloperTools", "KLH.Revit.DeveloperTools.vbproj", "{CFBF30C9-B8A3-46F0-9C23-5639A181B5BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
