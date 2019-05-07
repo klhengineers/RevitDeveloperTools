@@ -1,5 +1,5 @@
 ﻿# KLH Revit Developer Tools
-
+[![Build status](https://dev.azure.com/klhengineers/KLH/_apis/build/status/DeveloperTools-CI)](https://dev.azure.com/klhengineers/KLH/_build/latest?definitionId=18)
 ## KLHSnoop
 
 Look at the object properties of elements. 
