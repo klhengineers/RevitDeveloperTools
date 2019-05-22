@@ -113,6 +113,7 @@
                     <MenuItem Header="Add Current Document" Click="AddDocument"/>
                     <MenuItem Header="Add Current Application" Click="AddApplication"/>
                     <MenuItem Header="Add Active View" Click="AddActiveView"/>
+                    <MenuItem Header="Add Visual Tree" Click="AddUITree"/>
                 </ContextMenu>
             </TreeView.ContextMenu>
         </TreeView>
