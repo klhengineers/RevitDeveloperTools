@@ -1,13 +1,4 @@
-﻿' Copyright � 2019 Kohrs Lonnemann Heil Engineers, PSC (KLH Engineers)
-' 1538 Alexandria Pike, Suite 11, Fort Thomas Kentucky, 41075
-' www.klhengrs.com
-'
-' This software the proprietary and confidential property of KLH Engineers.
-' 
-' No party may possess or use this source code in any form for any reason
-' without the express written consent of KLH Engineers.
-
-Imports System.Collections.ObjectModel
+﻿Imports System.Collections.ObjectModel
 Imports System.ComponentModel
 Imports System.Globalization
 Imports System.Reflection
