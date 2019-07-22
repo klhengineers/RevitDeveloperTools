@@ -8,6 +8,7 @@ Imports System.Windows.Controls
 Imports System.Windows.Data
 Imports System.Windows.Input
 Imports System.Windows.Media
+Imports System.Windows.Automation
 Imports Autodesk.Revit.DB
 Imports Autodesk.Revit.DB.ExtensibleStorage
 Imports Autodesk.Revit.UI
@@ -19,11 +20,13 @@ Imports Newtonsoft
 Public Class KLHSnoop
     Implements INotifyPropertyChanged
 
+    Dim mainWindowHandle As IntPtr
     ''' <summary>
     '''     Creates a new KLHSnoop window populated with the elements in the selection
     '''     of the UIDocument
     ''' </summary>
     Public Sub New(uiDoc As UIDocument)
+        mainWindowHandle = System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle
         DataContext = Me
         InitializeComponent()
 
@@ -42,6 +45,7 @@ Public Class KLHSnoop
     '''     Creates a new KLHSnoop window populated with a given root TreeMember nodes.
     ''' </summary>
     Public Sub New(uiDoc As UIDocument, ParamArray rootNodes As TreeMember())
+        mainWindowHandle = System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle
         DataContext = Me
         InitializeComponent()
 
@@ -192,6 +196,14 @@ Public Class KLHSnoop
             Me.FontSize = Math.Max(Me.FontSize + (e.Delta / 120), 1)
             e.Handled = True
         End If
+    End Sub
+
+    Private Sub AddUITree(sender As Object, e As RoutedEventArgs)
+
+        Dim ae As AutomationElement
+        ae = AutomationElement.FromHandle(mainWindowHandle)
+
+        Roots.Add(New TreeMember("Revit Window", ae, Me, True))
     End Sub
 End Class
 

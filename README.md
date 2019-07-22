@@ -1,5 +1,5 @@
 ﻿# KLH Revit Developer Tools
-
+[![Build status](https://dev.azure.com/klhengineers/KLH/_apis/build/status/DeveloperTools-CI)](https://dev.azure.com/klhengineers/KLH/_build/latest?definitionId=18)
 ## KLHSnoop
 
 Look at the object properties of elements. 
@@ -28,3 +28,4 @@ form.Show();
 * **Type Highlighting**: <span style="color:blue">Structs</span>, <span style="color:cyan">classes</span>, <span style="color:green">elements</span>, <span style="color:darkkhaki">enums</span>, and even <span style="color:red">exceptions</span> are highlighted differently.
 * **Send to new window**: Right click any object in the tree to open it in a new modeless KLHSnoop window.
 * **Pass in arguments**: Properties with ArgumentExceptions can be given an argument. Right click and Edit Parameters to pass in primitive types, ElementIds, Elements, or just a default object from a class' default constructor.
+* **View Automation Tree**: See the properties of the window for writing automation tests.
