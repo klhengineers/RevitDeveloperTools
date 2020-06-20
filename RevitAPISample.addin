@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Chuongmep</Name>
+    <Assembly>RevitAPICmdSample.dll</Assembly>
+    <Publisher>Hồ Văn Chương</Publisher>
+    <FullClassName>DeveloperTools.App</FullClassName>
+    <ClientId>34DF2698-C4C4-4872-ADD4-6F8EDEC4AADE</ClientId>
+    <Isuer>Chuongmep.com</Isuer>
+    <VendorId>chuongpqvn@gmail.com</VendorId>
+  </AddIn>
+</RevitAddIns>
+
