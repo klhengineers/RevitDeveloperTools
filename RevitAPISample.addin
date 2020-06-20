@@ -2,7 +2,7 @@
 <RevitAddIns>
   <AddIn Type="Application">
     <Name>Chuongmep</Name>
-    <Assembly>RevitAPICmdSample.dll</Assembly>
+    <Assembly>KLH.Revit.DeveloperTools.dll</Assembly>
     <Publisher>Hồ Văn Chương</Publisher>
     <FullClassName>DeveloperTools.App</FullClassName>
     <ClientId>34DF2698-C4C4-4872-ADD4-6F8EDEC4AADE</ClientId>
