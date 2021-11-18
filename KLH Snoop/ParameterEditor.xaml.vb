@@ -130,6 +130,8 @@ Public Class ParameterValue
                 Return Integer.TryParse(ArgumentString, out)
             Case GetType(Double)
                 Return Double.TryParse(ArgumentString, out)
+            Case GetType(Guid)
+                Return Guid.TryParse(ArgumentString, out)
             Case GetType(ElementId)
                 Dim int = 0
                 If Integer.TryParse(ArgumentString, int) Then
