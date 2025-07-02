@@ -110,9 +110,9 @@ Public Class ParameterValue
     Public ReadOnly Property ValidationColor As SolidColorBrush
         Get
             If FromString(Nothing) Then
-                Return Brushes.Green
+                Return New SolidColorBrush(Color.FromRgb(&H6B, &HCF, &H7F)) ' Light green for dark theme
             Else
-                Return Brushes.Firebrick
+                Return New SolidColorBrush(Color.FromRgb(&HFF, &H6B, &H6B)) ' Light red for dark theme
             End If
         End Get
     End Property

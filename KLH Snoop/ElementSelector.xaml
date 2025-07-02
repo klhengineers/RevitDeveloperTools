@@ -4,10 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Element Selector" SizeToContent="WidthAndHeight" Width="340" ResizeMode="NoResize">
+        Title="Element Selector" SizeToContent="WidthAndHeight" Width="340" ResizeMode="NoResize"
+        Style="{DynamicResource DarkWindowStyle}">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Themes/DarkTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <StackPanel Height="35" Orientation="Horizontal">
-            <TextBox Margin="5" Width="230" ToolTip="Element Id" Text="{Binding InputString}" PreviewTextInput="TextBox_PreviewTextInput"/>
-            <Button Padding="5" IsCancel="True" Margin="5">Cancel</Button>
-            <Button Padding="5" Margin="5" Click="AddElements">OK</Button>
+            <TextBox Margin="5" Width="230" ToolTip="Element Id" Text="{Binding InputString}" PreviewTextInput="TextBox_PreviewTextInput" Style="{StaticResource DarkTextBoxStyle}"/>
+            <Button Padding="5" IsCancel="True" Margin="5" Style="{StaticResource DarkButtonStyle}">Cancel</Button>
+            <Button Padding="5" Margin="5" Click="AddElements" Style="{StaticResource DarkButtonStyle}">OK</Button>
         </StackPanel>
 </Window>

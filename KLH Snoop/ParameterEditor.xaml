@@ -5,23 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="ParameterEditor" ResizeMode="NoResize" SizeToContent="WidthAndHeight">
+        Title="ParameterEditor" ResizeMode="NoResize" SizeToContent="WidthAndHeight"
+        Style="{DynamicResource DarkWindowStyle}">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Themes/DarkTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <StackPanel>
-        <ListView ItemsSource="{Binding ParameterValues}">
+        <ListView ItemsSource="{Binding ParameterValues}" Style="{StaticResource DarkListViewStyle}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="{Binding Parameter}" 
-                               Width="250"/>
+                               Width="250"
+                               Style="{StaticResource DarkLabelStyle}"/>
                         <TextBox Text="{Binding ArgumentString, Mode=TwoWay}" 
                                  Width="150"
                                  VerticalAlignment="Center"
                                  Background="{Binding ValidationColor}"
-                                 IsEnabled="{Binding Editable}"/>
+                                 IsEnabled="{Binding Editable}"
+                                 Style="{StaticResource DarkTextBoxStyle}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Click="Button_Click">OK</Button>
+        <Button Click="Button_Click" Style="{StaticResource DarkButtonStyle}">OK</Button>
     </StackPanel>
 </Window>
