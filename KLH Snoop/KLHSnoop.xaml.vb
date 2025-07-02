@@ -526,17 +526,17 @@ Public Class ObjectToBrushConverter
         Implements IValueConverter.Convert
 
         If value Is Nothing Then
-            Return Brushes.DarkBlue
+            Return New SolidColorBrush(Color.FromRgb(&H87, &HCE, &HEB)) ' Light blue for dark theme
         ElseIf TypeOf value Is Exception Then
-            Return Brushes.Red
+            Return New SolidColorBrush(Color.FromRgb(&HFF, &H6B, &H6B)) ' Light red for dark theme
         ElseIf value.GetType.IsEnum Then
-            Return Brushes.DarkKhaki
+            Return New SolidColorBrush(Color.FromRgb(&HFF, &HD9, &H3D)) ' Light yellow for dark theme
         ElseIf TypeOf value Is Element Then
-            Return Brushes.DarkGreen
+            Return New SolidColorBrush(Color.FromRgb(&H6B, &HCF, &H7F)) ' Light green for dark theme
         ElseIf value.GetType.IsClass Then
-            Return Brushes.Cyan
+            Return New SolidColorBrush(Color.FromRgb(&H4E, &HCD, &HC4)) ' Light cyan for dark theme
         Else
-            Return Brushes.DarkBlue
+            Return New SolidColorBrush(Color.FromRgb(&H87, &HCE, &HEB)) ' Light blue for dark theme
         End If
     End Function
 

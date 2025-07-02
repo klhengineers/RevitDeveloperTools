@@ -7,11 +7,17 @@
         mc:Ignorable="d"
         Title="KLH Snoop" Height="450" Width="800"
         x:Name="SnoopWindow"
-        PreviewMouseWheel="SnoopWindow_MouseWheel">
+        PreviewMouseWheel="SnoopWindow_MouseWheel"
+        Style="{DynamicResource DarkWindowStyle}">
     <Window.Resources>
-        <local:ObjectToBrushConverter x:Key="ObjectToBrushConverter"/>
-        <local:ObjectToBrushLabelConverter x:Key="ObjectToBrushLabelConverter"/>
-        <local:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Themes/DarkTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <local:ObjectToBrushConverter x:Key="ObjectToBrushConverter"/>
+            <local:ObjectToBrushLabelConverter x:Key="ObjectToBrushLabelConverter"/>
+            <local:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        </ResourceDictionary>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -19,15 +25,19 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <TextBox Grid.Row="0" Text="{Binding SearchString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5 5 5 0" />
+        <TextBox Grid.Row="0" 
+                 Text="{Binding SearchString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                 Margin="5 5 5 0" 
+                 Style="{StaticResource DarkTextBoxStyle}" />
         <TreeView Name="ItemTree" 
                   Grid.Row="1" 
                   ItemsSource="{Binding Roots}" 
                   Grid.IsSharedSizeScope="True" 
                   Margin="5" 
-                  SelectedItemChanged="TreeView_SelectedItemChanged">
+                  SelectedItemChanged="TreeView_SelectedItemChanged"
+                  Style="{StaticResource DarkTreeViewStyle}">
             <TreeView.ItemContainerStyle>
-                <Style TargetType="{x:Type TreeViewItem}">
+                <Style TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource DarkTreeViewItemStyle}">
                     <Setter Property="IsExpanded" Value="True"/>
                     <Setter Property="Height" Value="Auto"/>
                     <Style.Triggers>
@@ -49,13 +59,13 @@
             </TreeView.ItemContainerStyle>
             <TreeView.Resources>
                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
-                                 Color="LightBlue" />
+                                 Color="#FF404040" />
                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}"
-                                 Color="Black" />
+                                 Color="#FFFFFFFF" />
                 <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}"
-                                 Color="LightGray" />
+                                 Color="#FF404040" />
                 <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}"
-                                 Color="Black" />
+                                 Color="#FFCCCCCC" />
                 <HierarchicalDataTemplate ItemsSource="{Binding Members}" DataType="{x:Type local:TreeMember}">
                     <Grid MouseDown="StackPanel_MouseDown">
                         <Grid.ColumnDefinitions>
@@ -69,31 +79,33 @@
                         <Image Source="{Binding IconPath}" 
                                Stretch="Uniform" 
                                Width="{Binding ElementName=SnoopWindow, Path=FontSize}"/>
-                        <Label Grid.Column="1" Content="{Binding Name}"/>
+                        <Label Grid.Column="1" Content="{Binding Name}" Style="{StaticResource DarkLabelStyle}"/>
                             <GridSplitter Grid.Column="2" 
                               HorizontalAlignment="Right" 
                               VerticalAlignment="Stretch"
                               ShowsPreview="true"
                               Width="0"/>
                         <Label Grid.Column="3" Content="{Binding TypeName}" Foreground="{Binding Value, Converter={StaticResource ObjectToBrushConverter}}"
-                               ToolTip="{Binding Value, Converter={StaticResource ObjectToBrushLabelConverter}}" />
+                               ToolTip="{Binding Value, Converter={StaticResource ObjectToBrushLabelConverter}}" 
+                               Style="{StaticResource DarkLabelStyle}" />
                         <GridSplitter Grid.Column="4" 
                               HorizontalAlignment="Right" 
                               VerticalAlignment="Stretch" 
                               ShowsPreview="true"
                               Width="0"/>
-                        <Label Grid.Column="5" Content="{Binding ValueString}" ToolTip="{Binding Value}"></Label>
+                        <Label Grid.Column="5" Content="{Binding ValueString}" ToolTip="{Binding Value}" Style="{StaticResource DarkLabelStyle}"></Label>
                         <Grid.ContextMenu>
-                            <ContextMenu>
-                                <MenuItem Header="Load Members" Click="RefreshData"/>
-                                <MenuItem Header="To New Window" Click="NewWindow"/>
-                                <MenuItem Header="Copy value" Click="CopyValue"/>
-                                <MenuItem Header="Copy data as JSON" Click="CopyJSON"/>
+                            <ContextMenu Style="{StaticResource DarkContextMenuStyle}">
+                                <MenuItem Header="Load Members" Click="RefreshData" Style="{StaticResource DarkMenuItemStyle}"/>
+                                <MenuItem Header="To New Window" Click="NewWindow" Style="{StaticResource DarkMenuItemStyle}"/>
+                                <MenuItem Header="Copy value" Click="CopyValue" Style="{StaticResource DarkMenuItemStyle}"/>
+                                <MenuItem Header="Copy data as JSON" Click="CopyJSON" Style="{StaticResource DarkMenuItemStyle}"/>
                                 <Separator Visibility="{Binding AnyParameters, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                                 <MenuItem 
                                     Header="Edit Parameters" 
                                     Click="EditParameters"
-                                    Visibility="{Binding AnyParameters, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                    Visibility="{Binding AnyParameters, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                    Style="{StaticResource DarkMenuItemStyle}"/>
                             </ContextMenu>
                         </Grid.ContextMenu>
                     </Grid>
@@ -103,17 +115,17 @@
                         <Image Source="{Binding IconPath}" 
                            Stretch="Uniform" 
                            Width="{Binding ElementName=SnoopWindow, Path=FontSize}"/>
-                        <Label Content="{Binding Name}"/>
+                        <Label Content="{Binding Name}" Style="{StaticResource DarkLabelStyle}"/>
                     </StackPanel>
                 </HierarchicalDataTemplate>
             </TreeView.Resources>
             <TreeView.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="Add Elements by Ids" Click="AddElements"/>
-                    <MenuItem Header="Add Current Document" Click="AddDocument"/>
-                    <MenuItem Header="Add Current Application" Click="AddApplication"/>
-                    <MenuItem Header="Add Active View" Click="AddActiveView"/>
-                    <MenuItem Header="Add Visual Tree" Click="AddUITree"/>
+                <ContextMenu Style="{StaticResource DarkContextMenuStyle}">
+                    <MenuItem Header="Add Elements by Ids" Click="AddElements" Style="{StaticResource DarkMenuItemStyle}"/>
+                    <MenuItem Header="Add Current Document" Click="AddDocument" Style="{StaticResource DarkMenuItemStyle}"/>
+                    <MenuItem Header="Add Current Application" Click="AddApplication" Style="{StaticResource DarkMenuItemStyle}"/>
+                    <MenuItem Header="Add Active View" Click="AddActiveView" Style="{StaticResource DarkMenuItemStyle}"/>
+                    <MenuItem Header="Add Visual Tree" Click="AddUITree" Style="{StaticResource DarkMenuItemStyle}"/>
                 </ContextMenu>
             </TreeView.ContextMenu>
         </TreeView>
